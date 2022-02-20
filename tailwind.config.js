@@ -10,5 +10,5 @@ module.exports = {
       mono: [...defaultTheme.fontFamily.mono],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }

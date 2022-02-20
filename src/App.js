@@ -31,6 +31,8 @@ const App = () => {
       const aboutSummary = filteredAbout.find((item) => item.fields.id === 2)
       const aboutFooter = filteredAbout.find((item) => item.fields.id === 1)
 
+      console.debug(aboutSummary)
+
       setAboutSummary(aboutSummary.fields)
       setAboutFooter(aboutFooter.fields)
 

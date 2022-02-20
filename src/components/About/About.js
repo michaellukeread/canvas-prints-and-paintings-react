@@ -1,3 +1,5 @@
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
 const About = ({ aboutSummary }) => (
   <section
     id="about"
@@ -6,7 +8,7 @@ const About = ({ aboutSummary }) => (
     <h1 className="text-4xl tracking-wider font-bold text-center text-stone-100">
       About
     </h1>
-    <p className="text-stone-100 w-1/2">{aboutSummary?.text}</p>
+    {documentToReactComponents(aboutSummary?.text)}
   </section>
 )
 
