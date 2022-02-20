@@ -4,8 +4,8 @@ import Button from '../Button'
 
 import useGallery from './hooks'
 
-const Gallery = () => {
-  const { open, doOpen, doClose, article, products } = useGallery()
+const Gallery = ({ products }) => {
+  const { open, doOpen, doClose, article } = useGallery(products)
   const { id, title, image, now, was, width, height, summary, paymentLink } =
     article
 

@@ -10,8 +10,8 @@ const Landing = () => (
     className="bg-stone-600 h-[calc(100vh-6rem)] flex flex-col items-center justify-center p-4 space-y-8"
   >
     <div className="bg-stone-100 rounded-sm shadow-lg p-8 flex flex-col gap-4">
-      <h1 className="text-8xl text-stone-900 uppercase tracking-tight font-bold text-left w-[1216px]">
-        Range of beautiful canvas paintings
+      <h1 className="text-7xl text-stone-900 tracking-tight font-bold text-left w-[1216px]">
+        Beautiful Wall Art for your Home or Business
       </h1>
       <div className="flex gap-4">
         <img

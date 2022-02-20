@@ -1,32 +1,29 @@
-import { useState, useEffect } from 'react'
-import { createClient } from 'contentful'
+import { useState } from 'react'
 
-const client = createClient({
-  space: process.env.REACT_APP_SPACE_ID,
-  accessToken: process.env.REACT_APP_API_CONTENT_DELIVERY,
-})
-
-const useGallery = () => {
+const useGallery = (products) => {
   const [open, setOpen] = useState(false)
-  const [products, setProducts] = useState([])
   const [article, setArticle] = useState({})
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const response = await client.getEntries()
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     const response = await client.getEntries()
+  //     console.debug(response)
+  //     const filteredResponse = response.items.filter(
+  //       (item) => item.sys.contentType.sys.id === 'product'
+  //     )
 
-      const items = response.items.reduce(
-        (acc, item) => [
-          ...acc,
-          { ...item.fields, image: item.fields.image.fields.file },
-        ],
-        []
-      )
-      setProducts(items)
-    }
+  //     const items = filteredResponse.reduce(
+  //       (acc, item) => [
+  //         ...acc,
+  //         { ...item.fields, image: item.fields.image.fields.file },
+  //       ],
+  //       []
+  //     )
+  //     setProducts(items)
+  //   }
 
-    getProducts()
-  }, [])
+  //   getProducts()
+  // }, [])
 
   const findArticle = (id) => {
     const a = products.find((item) => item.id === id)

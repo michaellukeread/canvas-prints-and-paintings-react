@@ -1,4 +1,4 @@
-const Input = ({ title, type, placeholder, ...props }) => (
+const Input = ({ title, type, placeholder, name, ...props }) => (
   <div className="flex flex-col gap-2">
     <label className="w-96 text-sm tracking-wider text-stone-900">
       {title}
@@ -7,6 +7,7 @@ const Input = ({ title, type, placeholder, ...props }) => (
       <textarea
         className="w-[32rem] bg-stone-100 text-sm text-stone-900 rounded-sm border-none focus:ring-2 focus:ring-stone-900"
         placeholder={placeholder}
+        name={name}
         {...props}
       />
     ) : (
@@ -14,6 +15,7 @@ const Input = ({ title, type, placeholder, ...props }) => (
         className="w-96 bg-stone-100 text-sm  text-stone-900 rounded-sm border-none focus:ring-2 focus:ring-stone-900"
         type={type}
         placeholder={placeholder}
+        name={name}
         {...props}
       />
     )}
@@ -38,16 +40,19 @@ const Contact = () => (
             title="Full name"
             type="text"
             placeholder="Enter your full name here"
+            name="Full name:"
           />
           <Input
             title="Email"
             type="email"
             placeholder="Enter a valid email address here"
+            name="Email address:"
           />
           <Input
             title="Message"
             type="textarea"
             placeholder="Enter a message here"
+            name="Message:"
           />
           <input
             type="submit"
