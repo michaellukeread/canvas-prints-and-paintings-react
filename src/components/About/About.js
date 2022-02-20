@@ -8,7 +8,9 @@ const About = ({ aboutSummary }) => (
     <h1 className="text-4xl tracking-wider font-bold text-center text-stone-100">
       About
     </h1>
-    {documentToReactComponents(aboutSummary?.text)}
+    <div className="prose prose-invert last:border-b">
+      {documentToReactComponents(aboutSummary?.text)}
+    </div>
   </section>
 )
 
