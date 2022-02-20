@@ -15,6 +15,8 @@ const useGallery = () => {
     const getProducts = async () => {
       const response = await client.getEntries()
 
+      console.debug('response', response)
+
       const items = response.items.reduce(
         (acc, item) => [
           ...acc,
