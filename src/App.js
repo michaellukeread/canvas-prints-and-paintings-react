@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createClient } from 'contentful'
 
 import NavigationBar from './components/NavigationBar'
 import Landing from './components/Landing'
@@ -6,8 +7,6 @@ import Gallery from './components/Gallery'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-
-import { createClient } from 'contentful'
 
 const client = createClient({
   space: process.env.REACT_APP_SPACE_ID,
