@@ -26,12 +26,10 @@ const App = () => {
         (item) => item.sys.contentType.sys.id === 'product'
       )
       const filteredAbout = response.items.filter(
-        (item) => item.sys.contentType.sys.id === 'about'
+        (item) => item.sys.contentType.sys.id === 'staticElements'
       )
       const aboutSummary = filteredAbout.find((item) => item.fields.id === 2)
       const aboutFooter = filteredAbout.find((item) => item.fields.id === 1)
-
-      console.debug(aboutSummary)
 
       setAboutSummary(aboutSummary.fields)
       setAboutFooter(aboutFooter.fields)
