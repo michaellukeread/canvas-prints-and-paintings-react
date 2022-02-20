@@ -18,7 +18,7 @@ const useGallery = () => {
       const items = response.items.reduce(
         (acc, item) => [
           ...acc,
-          { ...item.fields, image: item.fields.image[0].fields.file },
+          { ...item.fields, image: item.fields.image.fields.file },
         ],
         []
       )

@@ -30,7 +30,7 @@ const Contact = () => (
         Have any questions? Send us a message
       </h1>
       <form
-        action="https://formsubmit.co/5f4512ee6f277d182547acc873e9b5e9"
+        action="https://formsubmit.co/canvas.prints.and.paintings@gmail.com"
         method="POST"
       >
         <div className="flex flex-col gap-4">
