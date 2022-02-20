@@ -1,0 +1,10 @@
+.*/
+coverage/
+node_modules/
+public/
+notes/
+storybook-static/
+lib/
+package/
+src/index.css
+*.tgz
