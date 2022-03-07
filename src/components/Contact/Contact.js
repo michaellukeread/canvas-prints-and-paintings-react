@@ -28,8 +28,8 @@ const Contact = () => (
     className="py-32 bg-stone-100 flex items-center justify-center"
   >
     <div className="bg-white rounded-sm shadow-lg p-8">
-      <h1 className="text-stone-900 text-4xl font-bold tracking-wide mb-6 text-center">
-        Have any questions? Send us a message
+      <h1 className="text-stone-900 text-4xl font-bold tracking-wide mb-6 text-left">
+        Contact Us
       </h1>
       <form
         action="https://formsubmit.co/af8d433c7b8b984dafe6492b00387ae0"

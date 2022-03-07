@@ -4,7 +4,7 @@ const Article = ({ id, title, image, was, now, doOpen }) => (
     onClick={doOpen(id)}
   >
     <img
-      className="w-96 aspect-square group-hover:scale-105 duration-200"
+      className="w-96 group-hover:scale-105 duration-200"
       src={image.url}
       alt={title}
     />
