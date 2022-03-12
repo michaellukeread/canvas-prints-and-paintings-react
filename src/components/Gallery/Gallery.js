@@ -1,20 +1,16 @@
-// import Article from './Article'
-import Placeholder from './Placeholder'
+import Article from './Article'
 
-const groupBy = (array, key) => {
-  // Return the end result
-  return array.reduce((result, currentValue) => {
-    // If an array already present for key, push it to the array. Else create an array and push the object
-    ;(result[currentValue[key]] = result[currentValue[key]] || []).push(
-      currentValue
-    )
-    // Return the current iteration `result` value, this will be taken as next iteration `result` value and accumulate
-    return result
-  }, {}) // empty object is the initial value for result object
-}
+const groupByKey = (arr, key) =>
+  arr.reduce(
+    (acc, elem) => ({
+      ...acc,
+      [elem[key]]: [...(acc[elem[key]] || []), elem],
+    }),
+    {}
+  )
 
 const Gallery = ({ products, doOpen }) => {
-  const groupedBySize = groupBy(products, 'size')
+  const groupedBySize = groupByKey(products, 'printOrientation')
 
   return (
     <section id="gallery" className="pt-8 flex items-center flex-col">
@@ -28,26 +24,20 @@ const Gallery = ({ products, doOpen }) => {
               {item} Images
             </h2>
             <div className="grid grid-cols-3 gap-8">
-              {groupedBySize[item].map(({ id, size }) => (
-                <Placeholder key={id} size={size} />
+              {groupedBySize[item].map(({ id, title, image, now, was }) => (
+                <Article
+                  id={id}
+                  key={id}
+                  title={title}
+                  image={image}
+                  now={now}
+                  was={was}
+                  doOpen={doOpen}
+                />
               ))}
             </div>
           </div>
         ))}
-        {/* {groupedBySize.map(({ id, size }) => (
-          <Placeholder key={id} size={size} />
-        ))} */}
-        {/* {products.map(({ id, title, image, now, was }) => (
-          <Article
-            id={id}
-            key={id}
-            title={title}
-            image={image}
-            now={now}
-            was={was}
-            doOpen={doOpen}
-          />
-        ))} */}
       </div>
     </section>
   )
