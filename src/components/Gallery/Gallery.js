@@ -13,14 +13,17 @@ const Gallery = ({ products, doOpen }) => {
   const groupedBySize = groupByKey(products, 'printOrientation')
 
   return (
-    <section id="gallery" className="pt-8 flex items-center flex-col">
-      <h1 className="text-4xl tracking-wider font-bold text-center text-stone-900">
+    <section
+      id="gallery"
+      className="flex scroll-mt-12 flex-col items-center pt-8"
+    >
+      <h1 className="text-center text-4xl font-bold tracking-wider text-stone-900">
         Products
       </h1>
-      <div className="p-8 divide-y-2 space-y-16">
+      <div className="space-y-16 divide-y-2 p-8">
         {Object.keys(groupedBySize).map((item) => (
           <div>
-            <h2 className="text-center px-4 py-2 rounded-sm border-b-2 border-stone-400 text-stone-900 text-2xl capitalize my-8">
+            <h2 className="my-8 rounded-sm border-b-2 border-stone-400 px-4 py-2 text-center text-2xl capitalize text-stone-900">
               {item} Images
             </h2>
             <div className="grid grid-cols-3 gap-8">

@@ -3,10 +3,10 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const About = ({ aboutSummary }) => (
   <section
     id="about"
-    className="pt-8 bg-stone-900 flex items-center flex-col gap-8"
+    className="flex scroll-mt-20 flex-col items-center gap-8 bg-stone-900 pt-8"
   >
-    <h1 className="text-4xl tracking-wider font-bold text-center text-stone-100">
-      About
+    <h1 className="text-center text-4xl font-bold tracking-wider text-stone-100">
+      About Us
     </h1>
     <div className="prose prose-invert last:pb-8">
       {documentToReactComponents(aboutSummary?.text)}

@@ -5,6 +5,7 @@ import NavigationBar from './components/NavigationBar'
 import Landing from './components/Landing'
 import Gallery from './components/Gallery'
 import About from './components/About'
+import Service from './components/Service'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -58,6 +59,7 @@ const App = () => {
       <main>
         <Landing heading={heading} images={images} />
         <About aboutSummary={aboutSummary} />
+        <Service />
         <Gallery products={products} />
         <Contact />
       </main>

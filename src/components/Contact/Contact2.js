@@ -1,11 +1,14 @@
 const Contact2 = () => (
-  <section id="contact" className="text-gray-600 body-font relative border-t-2">
-    <div className="container px-5 py-24 mx-auto">
-      <div className="flex flex-col text-center w-full mb-12">
-        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+  <section
+    id="contact"
+    className="body-font relative scroll-mt-12 border-t-2 text-gray-600"
+  >
+    <div className="container mx-auto px-5 py-24">
+      <div className="mb-12 flex w-full flex-col text-center">
+        <h1 className="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
           Contact Us
         </h1>
-        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+        <p className="mx-auto text-base leading-relaxed lg:w-2/3">
           Have a question? Write it in the following fields below and we'll get
           back to you as soon as possible.
         </p>
@@ -14,13 +17,13 @@ const Contact2 = () => (
         action="https://formsubmit.co/af8d433c7b8b984dafe6492b00387ae0"
         method="POST"
       >
-        <div className="lg:w-1/2 md:w-2/3 mx-auto">
-          <div className="flex flex-wrap -m-2">
-            <div className="p-2 w-1/2">
+        <div className="mx-auto md:w-2/3 lg:w-1/2">
+          <div className="-m-2 flex flex-wrap">
+            <div className="w-1/2 p-2">
               <div className="relative">
                 <label
                   htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
+                  className="text-sm leading-7 text-gray-600"
                 >
                   Name
                 </label>
@@ -28,15 +31,15 @@ const Contact2 = () => (
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                 />
               </div>
             </div>
-            <div className="p-2 w-1/2">
+            <div className="w-1/2 p-2">
               <div className="relative">
                 <label
                   htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
+                  className="text-sm leading-7 text-gray-600"
                 >
                   Email
                 </label>
@@ -44,29 +47,29 @@ const Contact2 = () => (
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                 />
               </div>
             </div>
-            <div className="p-2 w-full">
+            <div className="w-full p-2">
               <div className="relative">
                 <label
                   htmlFor="message"
-                  className="leading-7 text-sm text-gray-600"
+                  className="text-sm leading-7 text-gray-600"
                 >
                   Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                  className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-stone-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                 ></textarea>
               </div>
             </div>
             <div className="p-2">
               <input
                 type="submit"
-                className="text-md text-stone-100 cursor-pointer bg-stone-900 hover:ring-4 ring-stone-800 px-6 py-2 rounded-sm tracking-widest duration-300"
+                className="text-md cursor-pointer rounded-sm bg-stone-900 px-6 py-2 tracking-widest text-stone-100 ring-stone-800 duration-300 hover:ring-4"
               />
             </div>
           </div>
