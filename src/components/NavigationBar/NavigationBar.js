@@ -1,27 +1,27 @@
 import { scrollTo } from '../../utils'
 
 const NavigationBar = () => (
-  <nav className="sticky top-0 z-10 flex h-24 items-center justify-between bg-stone-900 px-8 text-white">
-    <h1 className="col-span-3 col-start-2 text-2xl tracking-widest">
+  <nav className="top-0 z-10 flex w-full flex-col items-center justify-between bg-stone-900 p-4 text-white md:sticky md:h-24 md:flex-row md:px-8">
+    <h1 className="text-center text-2xl tracking-widest md:text-left">
       Canvas Prints and Paintings
     </h1>
-    <ul className="col-start-11 flex gap-4">
-      <li className="cursor-pointer rounded-sm p-2 tracking-widest duration-150 hover:bg-stone-200 hover:text-stone-900">
+    <ul className="mt-4 flex w-full flex-col gap-4 bg-stone-900 md:mt-0 md:w-max md:flex-row">
+      <li className="flex cursor-pointer items-center justify-center rounded-sm bg-slate-50 p-2 tracking-widest text-stone-900 duration-150 hover:bg-stone-200 hover:text-stone-900 md:bg-transparent md:text-white">
         <button className="text-sm" onClick={scrollTo('about')}>
           About Us
         </button>
       </li>
-      <li className="cursor-pointer rounded-sm p-2 tracking-widest duration-150 hover:bg-stone-200 hover:text-stone-900">
+      <li className="flex cursor-pointer items-center justify-center rounded-sm bg-slate-50 p-2 tracking-widest text-stone-900 duration-150 hover:bg-stone-200 hover:text-stone-900 md:bg-transparent md:text-white">
         <button className="text-sm" onClick={scrollTo('service')}>
           Our Services
         </button>
       </li>
-      <li className="cursor-pointer rounded-sm p-2 tracking-widest duration-150 hover:bg-stone-200 hover:text-stone-900">
+      <li className="flex cursor-pointer items-center justify-center rounded-sm bg-slate-50 p-2 tracking-widest text-stone-900 duration-150 hover:bg-stone-200 hover:text-stone-900 md:bg-transparent md:text-white">
         <button className="text-sm" onClick={scrollTo('contact')}>
           Contact Us
         </button>
       </li>
-      <li className="cursor-pointer rounded-sm bg-stone-200 p-2 tracking-widest text-stone-900 duration-150 hover:bg-stone-100">
+      <li className="flex cursor-pointer items-center justify-center rounded-sm bg-slate-50 p-2 tracking-widest text-stone-900 duration-150 hover:bg-stone-100 md:bg-stone-200 md:text-stone-900">
         <button className="text-sm" onClick={scrollTo('gallery')}>
           Browse Products
         </button>
