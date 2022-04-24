@@ -10,8 +10,15 @@ const AllProducts = () => {
   return (
     <Layout>
       <section className="my-8 grid grid-cols-auto-fill gap-8">
-        {products?.map(({ id, name, images }) => (
-          <Card key={id} id={id} title={name} image={images[0]} />
+        {products?.map(({ id, name, images, dollarAmount, frameOptions }) => (
+          <Card
+            key={id}
+            id={id}
+            title={name}
+            image={images[0]}
+            dollarAmount={dollarAmount}
+            frameOptions={frameOptions}
+          />
         ))}
       </section>
     </Layout>

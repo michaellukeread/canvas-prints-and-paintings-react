@@ -14,9 +14,9 @@ const Disclosure = ({ items }) => (
                 {title}
               </p>
               {open ? (
-                <MinusIcon className="h-6 w-6 text-indigo-600" />
+                <MinusIcon className="h-4 w-4 text-indigo-600" />
               ) : (
-                <PlusIcon className="h-6 w-6 text-stone-600" />
+                <PlusIcon className="h-4 w-4 text-stone-600" />
               )}
             </DisclosureReact.Button>
 
