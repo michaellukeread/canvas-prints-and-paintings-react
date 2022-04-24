@@ -1,11 +1,11 @@
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import store from 'redux/store'
 
 import NavBar from 'components/NavBar'
 
+import 'react-toastify/dist/ReactToastify.css'
 import 'styles/index.css'
 
 const App = ({ Component, pageProps }) => (

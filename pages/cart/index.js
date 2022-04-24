@@ -2,15 +2,15 @@ import Image from 'next/image'
 import { XIcon } from '@heroicons/react/solid'
 
 import Layout from 'components/Layout'
-import CheckoutForm from 'components/CheckoutForm'
 import { SHIPPING_COST } from 'config'
 
-import { useCart } from 'hooks'
+import { useCart, useCheckout } from 'hooks'
 
 const Cart = () => {
   const { productsInCart, handleRemoveFromCart, handleIncrementQuantity, handleDecrementQuantity } =
     useCart()
 
+  const { handleSubmit } = useCheckout()
   const subtotal = productsInCart.reduce(
     (acc, elem) => (acc += elem.dollarAmount * elem.quantity),
     0
@@ -63,7 +63,11 @@ const Cart = () => {
               <p className="font-bold">${total.toFixed(2)}</p>
             </span>
           </div>
-          <CheckoutForm />
+          <button
+            onClick={handleSubmit}
+            className="w-full rounded bg-indigo-600 p-2 font-bold text-white">
+            Submit
+          </button>
         </div>
       </section>
     </Layout>

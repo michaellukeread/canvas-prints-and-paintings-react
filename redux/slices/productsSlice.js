@@ -14,10 +14,12 @@ export const getProducts = createAsyncThunk('products/getProducts', async () => 
 
   const mergedItems = productsResponse.data
     .filter(a => pricesResponse.data.some(b => a.id === b.product))
-    .map(item => ({ ...item, ...pricesResponse.data.find(elem => item.id === elem.product) }))
+    .map(item => ({ ...pricesResponse.data.find(elem => item.id === elem.product), ...item }))
 
   const swapIds = mergedItems.map(item => ({
     ...item,
+    frameOptions: item.metadata.frameOptions.toLowerCase().replace(' ', '').split(',') || null,
+    orientation: item.metadata.orientation || null,
     price_id: item.id,
     id: item.product,
     dollarAmount: centsToDollars(item.unit_amount)

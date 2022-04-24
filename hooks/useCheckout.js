@@ -26,7 +26,6 @@ const useCheckoutForm = () => {
   )
 
   const total = subtotal + SHIPPING_COST
-  console.debug('total', total)
 
   const handleSubmit = async e => {
     e.preventDefault()
