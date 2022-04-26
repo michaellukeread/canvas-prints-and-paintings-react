@@ -22,8 +22,8 @@ const SOCIALS = [
   }
 ]
 
-const FooterBar = () => (
-  <div className="flex h-12 items-center justify-between bg-indigo-700 px-4">
+const Footer = () => (
+  <footer className="flex h-12 items-center justify-between bg-indigo-700 px-4">
     <div className="flex gap-x-2">
       <EyeIcon className="h-8 w-8 text-indigo-200" />
       <span className="flex items-center before:text-lg before:content-['|']">
@@ -31,14 +31,14 @@ const FooterBar = () => (
         <EyeIcon className="h-4 w-4 pl-1  " />
       </span>
     </div>
-    <div className="flex gap-x-2">
+    <div className="space-x-2">
       {SOCIALS.map(({ title, to }) => (
         <Link key={title} className="text-xs font-bold" to={to}>
           {title}
         </Link>
       ))}
     </div>
-  </div>
+  </footer>
 )
 
-export default FooterBar
+export default Footer

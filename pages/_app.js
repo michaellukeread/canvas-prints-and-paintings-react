@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import store from 'redux/store'
 
 import NavBar from 'components/NavBar'
-import FooterBar from 'components/FooterBar'
+import Footer from 'components/Footer'
 
 import 'react-toastify/dist/ReactToastify.css'
 import 'styles/index.css'
@@ -14,7 +14,7 @@ const App = ({ Component, pageProps }) => (
     <NavBar />
     <Component {...pageProps} />
     <ToastContainer autoClose={2000} />
-    <FooterBar />
+    <Footer />
   </Provider>
 )
 
