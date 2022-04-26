@@ -8,7 +8,6 @@ import FooterBar from 'components/FooterBar'
 
 import 'react-toastify/dist/ReactToastify.css'
 import 'styles/index.css'
-import Footer from '../components/FooterBar'
 
 const App = ({ Component, pageProps }) => (
   <Provider store={store}>
