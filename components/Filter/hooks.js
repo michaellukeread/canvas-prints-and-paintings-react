@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router'
 
-// items = ['Birds', 'Cliffs']
-
-const useFilter = (filter, items) => {
+const useFilter = ({ filter, items }) => {
   const router = useRouter()
   const { query } = router
 
@@ -18,7 +16,10 @@ const useFilter = (filter, items) => {
         }
       })
     } else {
-      const trimmed = query[filter].split(',').filter(item => item !== e.target.value)
+      const trimmed = query[filter]
+        .toString()
+        .split(',')
+        .filter(item => item !== e.target.value)
       const isntEmpty = Boolean(trimmed.length)
 
       const { [filter]: _, ...rest } = query
@@ -34,7 +35,12 @@ const useFilter = (filter, items) => {
 
   const newItems = items.map(item => ({
     label: item,
-    isChecked: isExisting ? query[filter].split(',').some(elem => elem === item) : false
+    isChecked: isExisting
+      ? query[filter]
+          .toString()
+          .split(',')
+          .some(elem => elem === item)
+      : false
   }))
 
   return { handleSelect, newItems }
