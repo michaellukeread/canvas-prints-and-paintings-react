@@ -18,11 +18,17 @@ export const getProducts = createAsyncThunk('products/getProducts', async () => 
 
   const swapIds = mergedItems.map(item => ({
     ...item,
-    frameOptions: item.metadata.frameOptions.toLowerCase().replace(' ', '').split(',') || null,
+    frameColours: item.metadata.frameColours.toLowerCase().replace(' ', '').split(',') || null,
     orientation: item.metadata.orientation || null,
+    category: item.metadata.category || null,
     price_id: item.id,
     id: item.product,
-    dollarAmount: centsToDollars(item.unit_amount)
+    dollarAmount: centsToDollars(item.unit_amount),
+    tags: [
+      ...item.metadata.frameColours.toLowerCase().replace(' ', '').split(','),
+      item.metadata.orientation?.toLowerCase(),
+      item.metadata.category?.toLowerCase()
+    ]
   }))
 
   return swapIds

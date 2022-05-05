@@ -34,7 +34,10 @@ const checkoutHandler = async (req, res) => {
     payment_method_types: [PAYMENT_METHOD],
     line_items,
     success_url: `${origin}/`,
-    cancel_url: `${origin}/cart`
+    cancel_url: `${origin}/cart`,
+    phone_number_collection: {
+      enabled: true
+    }
   }
 
   try {
