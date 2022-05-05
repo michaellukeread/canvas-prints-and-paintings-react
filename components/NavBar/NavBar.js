@@ -14,7 +14,7 @@ const NavigationBar = () => (
             {title}
           </Link>
         ))}
-        <Link to="/cart">
+        <Link to="/checkout?step=cart">
           <Cart />
         </Link>
       </ul>
