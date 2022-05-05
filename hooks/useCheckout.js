@@ -6,7 +6,7 @@ import { selectProducts } from 'redux/slices/productsSlice'
 import { CURRENCY, SHIPPING_COST } from 'config'
 import { fetchPostJSON, getStripe, formatAmountForStripe } from 'utils'
 
-const useCheckoutForm = () => {
+const useCheckoutForm = delivery_status => {
   const cart = useSelector(selectCart)
   const products = useSelector(selectProducts)
   const productsInCart = cart
@@ -32,6 +32,7 @@ const useCheckoutForm = () => {
     // Create a Checkout Session.
     const checkoutSession = await fetchPostJSON('/api/checkout_sessions', {
       amount: total,
+      delivery_status,
       line_items
     })
 

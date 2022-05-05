@@ -1,17 +1,30 @@
-import { useCallback } from 'react'
+import { useSelector } from 'react-redux'
 
-import { useDispatch, useSelector } from 'react-redux'
-
-import { getProducts, selectProducts } from 'redux/slices/productsSlice'
+import { selectProducts } from 'redux/slices/productsSlice'
+import { useRouter } from 'next/router'
 
 const useProducts = () => {
-  const dispatch = useDispatch()
-
-  const fetchProducts = useCallback(() => dispatch(getProducts()), [dispatch])
-
   const products = useSelector(selectProducts)
+  const router = useRouter()
 
-  return { fetchProducts, products }
+  const { query } = router
+
+  const filters = Object.keys(query).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: [...query[key].toString().split(',')]
+    }),
+    {}
+  )
+
+  const filteredProducts = products.filter(product =>
+    Object.keys(filters).every(key => filters[key].some(elem => product[key]?.includes(elem)))
+  )
+
+  const count = filteredProducts.length
+  const hasContent = Boolean(count)
+
+  return { products: filteredProducts, count, hasContent }
 }
 
 export default useProducts

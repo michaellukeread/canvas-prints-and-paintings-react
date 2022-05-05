@@ -42,7 +42,7 @@ const Product = () => {
           <p className="max-w-lg">{product?.description}</p>
           <p>Frame colours available:</p>
           <div className="flex gap-4">
-            {product?.frameOptions.map(option => (
+            {product?.frameColours.map(option => (
               <div
                 key={option}
                 className={classNames(
