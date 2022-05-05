@@ -2,9 +2,9 @@ import Layout from 'components/Layout'
 import Card from 'components/Card'
 import Filter from 'components/Filter'
 
-import { useProducts } from 'hooks'
+import { FILTERS } from 'config'
 
-import { FILTERS } from './config'
+import { useProducts } from 'hooks'
 
 const AllProducts = () => {
   const { products, count } = useProducts()

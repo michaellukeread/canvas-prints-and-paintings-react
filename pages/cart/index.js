@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import { XIcon } from '@heroicons/react/solid'
 
-import { SHIPPING_COST } from 'config'
+import { DELIVERY_OPTIONS } from 'config'
 import { useCart, useCheckout } from 'hooks'
 
 import Layout from 'components/Layout'
 import RadioGroup from 'components/RadioGroup'
 
-import { STEPS, DELIVERY_OPTIONS } from './config'
 import { useState } from 'react'
 
 const Cart = () => {

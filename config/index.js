@@ -21,3 +21,38 @@ export const DOMESTIC_SHIPPING_ID = 'shr_1KqZAYAsKMmbQm49fbk5AeJN'
 export const SUBMIT_TYPE = 'pay'
 export const PAYMENT_METHOD = 'card'
 export const ALLOWED_METHODS = [POST, HEAD]
+
+export const DELIVERY_OPTIONS = [
+  {
+    value: 'delivery',
+    label: 'Delivery'
+  },
+  {
+    value: 'pickup',
+    label: 'Pickup'
+  }
+]
+
+/* Filters */
+const BIRDS = 'birds'
+const CLIFFS = 'cliffs'
+const BANANAS = 'bananas'
+
+const BLACK = 'black'
+const WHITE = 'white'
+const OAK = 'oak'
+const GOLD = 'gold'
+
+const PORTRAIT = 'portrait'
+const LANDSCAPE = 'landscape'
+
+/* Grouped filters */
+const CATEGORY = [BIRDS, CLIFFS, BANANAS]
+const FRAME_COLOURS = [BLACK, WHITE, OAK, GOLD]
+const ORIENTATION = [PORTRAIT, LANDSCAPE]
+
+export const FILTERS = {
+  category: CATEGORY,
+  frameColours: FRAME_COLOURS,
+  orientation: ORIENTATION
+}
