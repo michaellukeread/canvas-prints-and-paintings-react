@@ -16,3 +16,14 @@ export const STEPS = [
     isComplete: false
   }
 ]
+
+export const DELIVERY_OPTIONS = [
+  {
+    value: 'delivery',
+    label: 'Delivery'
+  },
+  {
+    value: 'pickup',
+    label: 'Pickup'
+  }
+]

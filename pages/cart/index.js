@@ -1,39 +1,30 @@
-// import { XIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
+import { XIcon } from '@heroicons/react/solid'
 
-// import Image from 'next/image'
-// import { useRouter } from 'next/router'
+import { SHIPPING_COST } from 'config'
+import { useCart, useCheckout } from 'hooks'
 
 import Layout from 'components/Layout'
-import Steps from 'components/Steps'
-// import { SHIPPING_COST } from 'config'
+import RadioGroup from 'components/RadioGroup'
 
-// import { useCart, useCheckout } from 'hooks'
-import { STEPS } from './config'
+import { STEPS, DELIVERY_OPTIONS } from './config'
+import { useState } from 'react'
 
-const Checkout = () => {
-  // const router = useRouter()
-  // const { productsInCart, handleRemoveFromCart, handleIncrementQuantity, handleDecrementQuantity } =
-  //   useCart()
+const Cart = () => {
+  const { productsInCart, handleRemoveFromCart, handleIncrementQuantity, handleDecrementQuantity } =
+    useCart()
+  const [deliveryStatus, setDeliveryStatus] = useState(DELIVERY_OPTIONS[0].value)
 
-  // const { handleSubmit } = useCheckout()
-  // const subtotal = productsInCart.reduce(
-  //   (acc, elem) => (acc += elem.dollarAmount * elem.quantity),
-  //   0
-  // )
-
-  // const total = subtotal + SHIPPING_COST
-
-  // const { query } = router
+  const { handleSubmit } = useCheckout(deliveryStatus)
+  const subtotal = productsInCart.reduce(
+    (acc, elem) => (acc += elem.dollarAmount * elem.quantity),
+    0
+  )
 
   return (
     <Layout>
-      <section className="my-8 flex justify-center">
-        <Steps steps={STEPS} />
-      </section>
-
       <section className="my-8 ">
-        Bananas
-        {/* <h1 className=" border-b-8 border-indigo-100 py-8 text-5xl font-bold">Shopping Cart</h1>
+        <h1 className=" border-b-8 border-indigo-100 py-8 text-5xl font-bold">Shopping Cart</h1>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-8 flex flex-col items-center justify-center divide-y-4">
             {productsInCart.map(({ id, name, images, quantity, dollarAmount }) => (
@@ -64,16 +55,19 @@ const Checkout = () => {
             <h2 className="text-2xl">Order summary</h2>
             <div className="divide-y-2 divide-indigo-100">
               <span className="flex items-center justify-between py-4">
-                <p>Subtotal</p>
-                <p>${subtotal.toFixed(2)}</p>
-              </span>
-              <span className="flex items-center justify-between py-4">
-                <p>Shipping</p>
-                <p>${SHIPPING_COST}</p>
+                <RadioGroup
+                  onChange={setDeliveryStatus}
+                  title="Delivery Method"
+                  value={deliveryStatus}
+                  items={DELIVERY_OPTIONS}
+                />
               </span>
               <span className="flex items-center justify-between py-4">
                 <p className="font-bold">Total</p>
-                <p className="font-bold">${total.toFixed(2)}</p>
+                <p className="font-bold">${subtotal.toFixed(2)}</p>
+              </span>
+              <span className="flex items-center justify-between py-4">
+                <p>Tax and Delivery at checkout</p>
               </span>
             </div>
             <button
@@ -82,10 +76,10 @@ const Checkout = () => {
               Submit
             </button>
           </div>
-        </div> */}
+        </div>
       </section>
     </Layout>
   )
 }
 
-export default Checkout
+export default Cart
