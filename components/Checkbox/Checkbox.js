@@ -7,14 +7,16 @@ const Checkbox = ({ label, handleSelect, isChecked }) => (
         value={label}
         id={label}
         aria-describedby={label}
-        onChange={handleSelect()}
+        onClick={handleSelect()}
         checked={isChecked}
         type="checkbox"
-        className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+        className="focus:ring-3 h-4 w-4 cursor-pointer rounded border border-slate-300 bg-slate-50 text-slate-50 focus:ring-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:ring-offset-slate-800 dark:focus:ring-slate-600"
       />
     </div>
     <div className="ml-3 text-sm">
-      <label htmlFor={label} className="font-medium text-gray-900 dark:text-gray-300">
+      <label
+        htmlFor={label}
+        className="cursor-pointer font-medium capitalize text-slate-50 dark:text-slate-300">
         {label}
       </label>
     </div>
