@@ -4,7 +4,7 @@ const Badge = ({ count, className }) => (
   <p
     className={classNames(
       className,
-      'inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-300 px-1 text-xs text-black ring-2 ring-indigo-400'
+      'inline-flex h-6 w-6 items-center justify-center rounded bg-slate-500 px-1 text-xs font-medium text-black'
     )}>
     {count}
   </p>
