@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import { XIcon } from '@heroicons/react/solid'
 
 import { DELIVERY_OPTIONS } from 'config'
 import { useCart, useCheckout } from 'hooks'
+import empty_cart from 'assets/images/empty_cart.svg'
 
 import Layout from 'components/Layout'
 import RadioGroup from 'components/RadioGroup'
+import Link from 'components/Link'
+import QuantitySelector from 'components/QuantitySelector'
 
 import { useState } from 'react'
 
@@ -20,41 +22,76 @@ const Cart = () => {
     0
   )
 
+  const hasContent = productsInCart.length > 0
+
   return (
     <Layout>
-      <h1 className="my-8 text-4xl font-semibold uppercase text-slate-50">Shopping Cart</h1>
-      <section className="flex gap-16">
-        <div className="flex-1">
-          <div className="col-span-8 flex flex-col items-center justify-center divide-y-4">
-            {productsInCart.map(({ id, name, images, quantity, dollarAmount }) => (
-              <div key={id} className="flex w-full items-start justify-between py-8">
-                <div className="flex gap-8">
-                  <Image src={images[0]} alt={name} width={250} height={250} />
-                  <div className="flex flex-col justify-between">
-                    <div>
-                      <h2 className="text-xl font-semibold">{name}</h2>
-                      <p className="text font-semibold">${dollarAmount}</p>
-                    </div>
+      <section className="my-8 flex items-end justify-between">
+        <h1 className="page-title">Your cart</h1>
+        <Link to="/products" className="link" arrow>
+          Continue shopping
+        </Link>
+      </section>
 
-                    <span>
-                      <button onClick={handleIncrementQuantity(id)}>increase +</button>
-                      <p>Quantity: {quantity}</p>
-                      <button onClick={handleDecrementQuantity(id)}>decrease -</button>
-                    </span>
-                  </div>
+      <section>
+        {hasContent && (
+          <div className="mb-8 grid grid-cols-3 border-b border-slate-700 pb-2">
+            <h6 className="subtitle">Product</h6>
+            <h6 className="subtitle">Quantity</h6>
+            <h6 className="subtitle text-right">Total</h6>
+          </div>
+        )}
+
+        {hasContent &&
+          productsInCart.map(({ id, name, images, quantity, dollarAmount }) => (
+            <div
+              key={id}
+              className="my-8 grid grid-cols-3 border-b-2 border-slate-600 pb-8 text-slate-50">
+              <article className="flex flex-col gap-4 lg:flex-row">
+                <div>
+                  <Image src={images[0]} alt={name} width={100} height={100} className="rounded" />
                 </div>
 
-                <button onClick={handleRemoveFromCart(id)}>
-                  <XIcon className="h-6 w-6 text-black" />
-                </button>
+                <div>
+                  <h2 className="product-title">{name}</h2>
+                  <p className="price">${dollarAmount}</p>
+                </div>
+              </article>
+
+              <div>
+                <QuantitySelector
+                  id={id}
+                  decrement={handleDecrementQuantity}
+                  increment={handleIncrementQuantity}
+                  remove={handleRemoveFromCart}
+                  quantity={quantity}
+                />
               </div>
-            ))}
+
+              <p className="price text-right">
+                ${Math.round((dollarAmount * quantity + Number.EPSILON) * 100) / 100}
+              </p>
+            </div>
+          ))}
+
+        {!hasContent && (
+          <div className="flex flex-col items-center rounded-lg bg-slate-50 p-8">
+            <h1 className="text-2xl font-medium uppercase tracking-wide">
+              Your cart is currently empty...
+            </h1>
+            <Image src={empty_cart} width={300} height={300} alt="empty cart" />
           </div>
-        </div>
-        <div className="sticky top-4 col-span-4 h-max rounded bg-slate-900 p-4">
-          <h2 className="text-lg font-medium tracking-widest text-slate-50">Order summary</h2>
-          <div className="divide-y-2 divide-slate-50">
-            <span className="flex items-center justify-between py-4">
+        )}
+        {hasContent && (
+          <div className="space-y-4 text-right text-slate-50">
+            <span className="inline-flex items-center gap-2">
+              <h5 className="product-title">Subtotal:</h5>
+              <p className="price ">${subtotal.toFixed(2)} AUD</p>
+            </span>
+            <p className="text-xs font-extralight tracking-wider">
+              Taxes and shipping cost calculated at checkout
+            </p>
+            <span className="flex items-center justify-end py-4">
               <RadioGroup
                 onChange={setDeliveryStatus}
                 title="Delivery Method"
@@ -62,20 +99,15 @@ const Cart = () => {
                 items={DELIVERY_OPTIONS}
               />
             </span>
-            <span className="flex items-center justify-between py-4 tracking-widest text-slate-50">
-              <p className="font-medium">Total</p>
-              <p className="font-medium">${subtotal.toFixed(2)}</p>
-            </span>
-            <span className="flex items-center justify-between py-4 text-slate-50">
-              <p>Tax and Delivery at checkout</p>
-            </span>
+            <div className="border-t-2 border-slate-500 pt-8">
+              <button
+                onClick={handleSubmit}
+                className="w-max bg-lime-200 p-4 text-sm text-slate-900 duration-300 hover:bg-slate-50 hover:text-slate-900">
+                Check out
+              </button>
+            </div>
           </div>
-          <button
-            onClick={handleSubmit}
-            className="w-full rounded bg-slate-600 p-2 font-medium uppercase tracking-widest text-slate-50 duration-150 hover:bg-slate-200 hover:text-slate-900">
-            Submit
-          </button>
-        </div>
+        )}
       </section>
     </Layout>
   )

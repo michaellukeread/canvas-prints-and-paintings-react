@@ -74,8 +74,24 @@
     @apply text-4xl font-bold
   }
 
+  .page-title {
+    @apply text-3xl font-semibold text-slate-50
+  }
+
+  .link {
+    @apply underline hover:text-lime-300 cursor-pointer text-lime-200 text-sm tracking-wide
+  }
+
+  .subtitle {
+    @apply text-slate-50 text-sm tracking-wider
+  }
+
+  .product-title {
+    @apply text-lg font-medium tracking-wide
+  }
+
   .price {
-    @apply text-2xl font-medium
+    @apply text-sm font-medium tracking-wider
   }
 }
 
