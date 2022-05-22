@@ -1,28 +1,23 @@
+import { useState } from 'react'
 import Image from 'next/image'
 
 import { DELIVERY_OPTIONS } from 'config'
 import { useCart, useCheckout } from 'hooks'
-import empty_cart from 'assets/images/empty_cart.svg'
 
+import empty_cart from 'assets/images/empty_cart.svg'
 import Layout from 'components/Layout'
 import RadioGroup from 'components/RadioGroup'
 import Link from 'components/Link'
 import QuantitySelector from 'components/QuantitySelector'
 
-import { useState } from 'react'
-
 const Cart = () => {
-  const { productsInCart, handleRemoveFromCart, handleIncrementQuantity, handleDecrementQuantity } =
-    useCart()
+  const { cart, handleRemoveFromCart, handleIncrementQuantity, handleDecrementQuantity } = useCart()
   const [deliveryStatus, setDeliveryStatus] = useState(DELIVERY_OPTIONS[0].value)
 
   const { handleSubmit } = useCheckout(deliveryStatus)
-  const subtotal = productsInCart.reduce(
-    (acc, elem) => (acc += elem.dollarAmount * elem.quantity),
-    0
-  )
+  const subtotal = cart.reduce((acc, elem) => (acc += elem.dollarAmount * elem.quantity), 0)
 
-  const hasContent = productsInCart.length > 0
+  const hasContent = cart.length > 0
 
   return (
     <Layout>
@@ -43,7 +38,7 @@ const Cart = () => {
         )}
 
         {hasContent &&
-          productsInCart.map(({ id, name, images, quantity, dollarAmount }) => (
+          cart.map(({ id, name, images, quantity, dollarAmount }) => (
             <div
               key={id}
               className="my-8 grid grid-cols-3 border-b-2 border-slate-600 pb-8 text-slate-50">
