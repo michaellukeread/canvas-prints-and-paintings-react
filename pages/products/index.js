@@ -1,18 +1,47 @@
 import { useState, useCallback } from 'react'
-
+import { useRouter } from 'next/router'
 import { FilterIcon } from '@heroicons/react/solid'
+import Stripe from 'stripe'
+
+import { classNames, summariseProduct } from 'utils'
+import { LIMIT as limit, FILTERS } from 'config'
 
 import Layout from 'components/Layout'
 import Card from 'components/Card'
 import Filter from 'components/Filter'
 
-import { classNames } from 'utils'
-import { FILTERS } from 'config'
-import { useProducts } from 'hooks'
+export async function getStaticProps() {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+  const _products = await stripe.products.list({ limit })
+  const prices = await stripe.prices.list({ limit })
 
-const AllProducts = () => {
+  const mergedItems = _products.data
+    .filter(a => prices.data.some(b => a.id === b.product))
+    .map(item => ({ ...prices.data.find(elem => item.id === elem.product), ...item }))
+
+  const products = mergedItems.map(item => summariseProduct(item))
+
+  return { props: { products } }
+}
+
+const AllProducts = ({ products }) => {
   const [toggle, setToggle] = useState(false)
-  const { products, count } = useProducts()
+  const router = useRouter()
+
+  const { query } = router
+  const count = products.length
+
+  const filters = Object.keys(query).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: [...query[key].toString().split(',')]
+    }),
+    {}
+  )
+
+  const filteredProducts = products.filter(product =>
+    Object.keys(filters).every(key => filters[key].some(elem => product[key]?.includes(elem)))
+  )
 
   const handleToggle = useCallback(() => setToggle(prev => !prev), [setToggle])
 
@@ -49,7 +78,7 @@ const AllProducts = () => {
 
         {count > 0 ? (
           <div className="grid grid-cols-12 gap-8">
-            {products.map(({ id, name, images, dollarAmount }) => (
+            {filteredProducts.map(({ id, name, images, dollarAmount }) => (
               <Card key={id} id={id} title={name} image={images[0]} dollarAmount={dollarAmount} />
             ))}
           </div>
@@ -59,24 +88,6 @@ const AllProducts = () => {
           </h5>
         )}
       </section>
-
-      {/* <section className="my-8 grid grid-cols-12 gap-8">
-        <div className="col-span-2 flex flex-col gap-8">
-          {Object.keys(FILTERS).map(filter => (
-            <Filter key={filter} filter={filter} items={FILTERS[filter]} />
-          ))}
-        </div>
-
-        <div className="col-span-9">
-          <h2 className="title mb-8">Artworks found: {count}</h2>
-          <div className="grid grid-cols-12 gap-8">
-            {' '}
-            {products?.map(({ id, name, images, dollarAmount }) => (
-              <Card key={id} id={id} title={name} image={images[0]} dollarAmount={dollarAmount} />
-            ))}
-          </div>
-        </div>
-      </section> */}
     </Layout>
   )
 }
