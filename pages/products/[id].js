@@ -9,6 +9,7 @@ import { classNames, summariseProduct } from 'utils'
 import { addToCart } from 'redux/slices/cartSlice'
 import Layout from 'components/Layout'
 import Disclosure from 'components/Disclosure'
+import Button from 'components/Button'
 
 const FRAME_COLOURS = {
   black: 'bg-black',
@@ -55,6 +56,9 @@ const Product = ({ product }) => {
   return (
     <Layout>
       <section className="my-8 flex items-start justify-center gap-8">
+        <Button variant="link" to="/products">
+          Continue Shopping
+        </Button>
         <Image src={product.images[0]} width={300} height={300} alt="" />
         <div className="flex flex-col gap-4">
           <h1 className="title">{product?.name}</h1>
