@@ -1,29 +1,21 @@
 import { useSelector } from 'react-redux'
 
 import { selectCart } from 'redux/slices/cartSlice'
-import { selectProducts } from 'redux/slices/productsSlice'
 
 import { CURRENCY, SHIPPING_COST } from 'config'
 import { fetchPostJSON, getStripe, formatAmountForStripe } from 'utils'
 
 const useCheckoutForm = delivery_status => {
   const cart = useSelector(selectCart)
-  const products = useSelector(selectProducts)
-  const productsInCart = cart
-    .filter(a => products.some(b => a.id === b.id))
-    .map(item => ({ ...item, ...products.find(elem => item.id === elem.id) }))
 
-  const line_items = productsInCart.map(({ name, dollarAmount, quantity }) => ({
+  const line_items = cart.map(({ name, dollarAmount, quantity }) => ({
     name,
     amount: formatAmountForStripe(dollarAmount, CURRENCY),
     currency: CURRENCY,
     quantity
   }))
 
-  const subtotal = productsInCart.reduce(
-    (acc, elem) => (acc += elem.dollarAmount * elem.quantity),
-    0
-  )
+  const subtotal = cart.reduce((acc, elem) => (acc += elem.dollarAmount * elem.quantity), 0)
 
   const total = subtotal + SHIPPING_COST
 

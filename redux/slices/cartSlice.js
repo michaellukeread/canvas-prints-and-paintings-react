@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import storage from 'redux-persist/lib/storage'
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -24,10 +25,14 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       const itemIndex = state.findIndex(item => item.id === action.payload)
       state.splice(itemIndex, 1)
+    },
+    clearCart: (state, action) => {
+      state.splice(0)
     }
   }
 })
 
 export const cartReducer = cartSlice.reducer
 export const selectCart = state => state.cart
-export const { addToCart, incrementQuantity, decrementQuantity, removeFromCart } = cartSlice.actions
+export const { addToCart, incrementQuantity, decrementQuantity, removeFromCart, clearCart } =
+  cartSlice.actions

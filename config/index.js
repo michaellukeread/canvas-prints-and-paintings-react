@@ -1,3 +1,5 @@
+import { TruckIcon, HomeIcon } from '@heroicons/react/solid'
+
 export const LIMIT = 100
 export const MIN_AMOUNT = 10.0
 export const MAX_AMOUNT = 5000.0
@@ -25,11 +27,13 @@ export const ALLOWED_METHODS = [POST, HEAD]
 export const DELIVERY_OPTIONS = [
   {
     value: 'delivery',
-    label: 'Delivery'
+    label: 'Delivery',
+    icon: <TruckIcon className="h-5 w-5" />
   },
   {
     value: 'pickup',
-    label: 'Pickup'
+    label: 'Pickup',
+    icon: <HomeIcon className="h-5 w-5" />
   }
 ]
 

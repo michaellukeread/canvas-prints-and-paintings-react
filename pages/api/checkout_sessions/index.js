@@ -92,7 +92,7 @@ const checkoutHandler = async (req, res) => {
     submit_type: SUBMIT_TYPE,
     payment_method_types: [PAYMENT_METHOD],
     line_items,
-    success_url: `${origin}/`,
+    success_url: `${origin}/success`,
     cancel_url: `${origin}/cart`,
     phone_number_collection: {
       enabled: true
