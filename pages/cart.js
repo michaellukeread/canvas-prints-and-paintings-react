@@ -8,6 +8,7 @@ import empty_cart from 'assets/images/empty_cart.svg'
 import Layout from 'components/Layout'
 import RadioGroup from 'components/RadioGroup'
 import Link from 'components/Link'
+import Button from 'components/Button'
 import QuantitySelector from 'components/QuantitySelector'
 
 const Cart = () => {
@@ -23,9 +24,9 @@ const Cart = () => {
     <Layout>
       <section className="my-8 flex items-end justify-between">
         <h1 className="page-title">Your cart</h1>
-        <Link to="/products" className="link" arrow>
-          Continue shopping
-        </Link>
+        <Button variant="link" to="/products">
+          Continue Shopping
+        </Button>
       </section>
 
       <section>
@@ -43,12 +44,14 @@ const Cart = () => {
               key={id}
               className="my-8 grid grid-cols-3 border-b-2 border-slate-600 pb-8 text-slate-50">
               <article className="flex flex-col gap-4 lg:flex-row">
-                <div>
+                <Link className="product-title" to={`/products/${id}`}>
                   <Image src={images[0]} alt={name} width={100} height={100} className="rounded" />
-                </div>
+                </Link>
 
                 <div>
-                  <h2 className="product-title">{name}</h2>
+                  <Link className="product-title" to={`/products/${id}`}>
+                    {name}
+                  </Link>
                   <p className="price">${dollarAmount}</p>
                 </div>
               </article>
