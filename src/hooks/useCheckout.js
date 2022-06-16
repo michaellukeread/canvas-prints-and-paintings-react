@@ -5,15 +5,17 @@ import { selectCart } from 'redux/slices/cartSlice'
 import { CURRENCY, SHIPPING_COST } from 'config'
 import { fetchPostJSON, getStripe, formatAmountForStripe } from 'utils'
 
-const useCheckoutForm = delivery_status => {
+const useCheckoutForm = deliveryStatus => {
   const cart = useSelector(selectCart)
 
-  const line_items = cart.map(({ name, dollarAmount, quantity }) => ({
+  const lineItems = cart.map(({ name, dollarAmount, quantity }) => ({
     name,
     amount: formatAmountForStripe(dollarAmount, CURRENCY),
     currency: CURRENCY,
     quantity
   }))
+
+  const metadata = cart.map({ id })
 
   const subtotal = cart.reduce((acc, elem) => (acc += elem.dollarAmount * elem.quantity), 0)
 
@@ -24,8 +26,8 @@ const useCheckoutForm = delivery_status => {
     // Create a Checkout Session.
     const checkoutSession = await fetchPostJSON('/api/checkout_sessions', {
       amount: total,
-      delivery_status,
-      line_items
+      delivery_status: deliveryStatus,
+      line_items: lineItems
     })
 
     if (checkoutSession.statusCode === 500) {

@@ -5,7 +5,6 @@ const useFilter = ({ filter, items }) => {
   const { query } = router
 
   const handleSelect = () => e => {
-    console.debug(e)
     const isChecked = e.target.checked
     if (isChecked) {
       const isExisting = Boolean(query[filter])

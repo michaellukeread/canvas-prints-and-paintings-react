@@ -7,12 +7,15 @@ const Card = ({ id, title, image, dollarAmount }) => (
       <a className="mb-1 overflow-hidden">
         {image && (
           <Image
+            placeholder="blur"
+            blurDataURL={image}
             src={image}
             alt={title}
             width="100%"
             height="100%"
             layout="responsive"
             className="duration-150 hover:scale-105"
+            priority
           />
         )}
       </a>
