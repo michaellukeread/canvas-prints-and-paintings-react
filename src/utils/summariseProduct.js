@@ -2,7 +2,7 @@ import centsToDollars from './centsToDollars'
 
 const summariseProduct = product => ({
   ...product,
-  frameColours: product?.metadata.frameColours?.toLowerCase().replace(' ', '').split(',') || null,
+  frameColours: product.metadata.frameColours.toLowerCase().replaceAll(' ', '').split(',') || null,
   orientation: product.metadata.orientation || null,
   category: product.metadata.category || null,
   price_id: product.id || null,

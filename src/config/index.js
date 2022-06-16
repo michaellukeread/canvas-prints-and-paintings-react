@@ -60,3 +60,11 @@ export const FILTERS = {
   frameColours: FRAME_COLOURS,
   orientation: ORIENTATION
 }
+
+/* CSS Frame Colours */
+export const CSS_FRAME_COLOURS = {
+  [BLACK]: 'bg-black',
+  [WHITE]: 'bg-white',
+  [OAK]: 'bg-amber-900',
+  [GOLD]: 'bg-yellow-500'
+}
