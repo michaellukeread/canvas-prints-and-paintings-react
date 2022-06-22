@@ -8,16 +8,14 @@ import { fetchPostJSON, getStripe, formatAmountForStripe } from 'utils'
 const useCheckoutForm = deliveryStatus => {
   const cart = useSelector(selectCart)
 
-  const lineItems = cart.map(({ name, dollarAmount, quantity }) => ({
+  const lineItems = cart.map(({ name, price, quantity }) => ({
     name,
-    amount: formatAmountForStripe(dollarAmount, CURRENCY),
+    amount: formatAmountForStripe(price, CURRENCY),
     currency: CURRENCY,
     quantity
   }))
 
-  const metadata = cart.map({ id })
-
-  const subtotal = cart.reduce((acc, elem) => (acc += elem.dollarAmount * elem.quantity), 0)
+  const subtotal = cart.reduce((acc, elem) => (acc += elem.price * elem.quantity), 0)
 
   const total = subtotal + SHIPPING_COST
 

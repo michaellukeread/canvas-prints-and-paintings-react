@@ -60,21 +60,21 @@ const Product = ({ product }) => {
         </Button>
         <Image
           placeholder="blur"
-          blurDataURL={product.images[0]}
-          src={product.images[0]}
+          blurDataURL={product?.images[0]}
+          src={product?.images[0]}
           width={300}
           height={300}
           alt=""
           priority
         />
         <div className="flex flex-col gap-4">
-          <h1 className="title">{product.name}</h1>
-          <h2 className="price">${product.dollarAmount}</h2>
+          <h1 className="title">{product?.name}</h1>
+          <h2 className="price">${product?.price}</h2>
           <p className="text-xl font-medium capitalize">{product?.orientation}</p>
-          <p className="max-w-lg">{product.description}</p>
+          <p className="max-w-lg">{product?.description}</p>
           <p>Frame colours available:</p>
           <div className="flex gap-4">
-            {product.frameColours.map(colour => (
+            {product?.frameColours.map(colour => (
               <div
                 key={colour}
                 className={classNames(

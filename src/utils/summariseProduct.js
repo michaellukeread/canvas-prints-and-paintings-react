@@ -8,7 +8,7 @@ const summariseProduct = product => ({
   price_id: product.id || null,
   id: product.product || null,
   price: centsToDollars(product.unit_amount) || null,
-  featuredImage: product?.images[0] || null,
+  featuredImage: product.images[0] || null,
   isFeatured: product.metadata.featured || null,
   tags: [
     product.metadata.frameColours?.toLowerCase().replace(' ', '').split(',') || null,
