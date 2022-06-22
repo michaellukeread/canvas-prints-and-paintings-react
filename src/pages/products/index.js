@@ -6,7 +6,7 @@ import Stripe from 'stripe'
 import { classNames, summariseProduct } from 'utils'
 import { LIMIT as limit, FILTERS } from 'config'
 
-import Layout from 'components/Layout'
+import { MainLayout } from 'components/Layout'
 import Card from 'components/Card'
 import Filter from 'components/Filter'
 
@@ -21,7 +21,7 @@ export async function getStaticProps() {
 
   const products = mergedItems.map(item => summariseProduct(item))
 
-  return { props: { products } }
+  return { props: { products }, revalidate: 10 }
 }
 
 const AllProducts = ({ products }) => {
@@ -46,30 +46,30 @@ const AllProducts = ({ products }) => {
   const handleToggle = useCallback(() => setToggle(prev => !prev), [setToggle])
 
   return (
-    <Layout className="mt-8 space-y-8">
-      <h1 className="text-4xl font-semibold uppercase text-slate-50">Products</h1>
+    <MainLayout className="mt-8 space-y-8">
+      <h1 className="text-teriary50 text-4xl font-semibold uppercase">Products</h1>
 
       <section className="space-y-8">
         <div className="flex items-center justify-between">
           <button
             className={classNames(
-              toggle ? 'text-slate-50' : 'text-slate-600',
+              toggle ? 'text-teriary50' : 'text-teriary600',
               'inline-flex gap-2 font-medium tracking-wider duration-150'
             )}
             onClick={handleToggle}>
             <FilterIcon
               className={classNames(
-                toggle ? 'text-slate-50' : 'text-slate-600',
+                toggle ? 'text-teriary50' : 'text-teriary600',
                 'h-6 w-6 duration-150'
               )}
             />
             Filter
           </button>
-          <p className="tracking-wider text-slate-50">({count}) Products</p>
+          <p className="text-teriary50 tracking-wider">({count}) Products</p>
         </div>
 
         {toggle && (
-          <div className="flex gap-8 divide-x-2 rounded bg-slate-900 py-8 px-4">
+          <div className="bg-slate-900 flex gap-8 divide-x-2 rounded py-8 px-4">
             {Object.keys(FILTERS).map(filter => (
               <Filter key={filter} filter={filter} items={FILTERS[filter]} />
             ))}
@@ -83,12 +83,12 @@ const AllProducts = ({ products }) => {
             ))}
           </div>
         ) : (
-          <h5 className="text-center text-lg text-slate-50">
+          <h5 className="text-teriary50 text-center text-lg">
             No products found matching your filters.
           </h5>
         )}
       </section>
-    </Layout>
+    </MainLayout>
   )
 }
 

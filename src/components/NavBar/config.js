@@ -1,4 +1,5 @@
 export const NAV_ITEMS = [
-  { title: 'HOME', to: '/' },
-  { title: 'SHOP', to: '/products' }
+  { title: 'All Products', to: '/products' },
+  { title: 'About', to: '/about' },
+  { title: 'Contact', to: '/contact' }
 ]

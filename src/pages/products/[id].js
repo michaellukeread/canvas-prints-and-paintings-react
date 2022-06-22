@@ -7,7 +7,7 @@ import { DISCLOSURE_ITEMS, LIMIT as limit, CSS_FRAME_COLOURS } from 'config'
 import { classNames, summariseProduct } from 'utils'
 
 import { addToCart } from 'redux/slices/cartSlice'
-import Layout from 'components/Layout'
+import { MainLayout } from 'components/Layout'
 import Disclosure from 'components/Disclosure'
 import Button from 'components/Button'
 
@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
 
   const product = summariseProduct(productWithPrice)
 
-  return { props: { product } }
+  return { props: { product }, revalidate: 10 }
 }
 
 const Product = ({ product }) => {
@@ -50,8 +50,10 @@ const Product = ({ product }) => {
     })
   }
 
+  if (!product) <div>Loading...</div>
+
   return (
-    <Layout>
+    <MainLayout>
       <section className="my-8 flex items-start justify-center gap-8">
         <Button variant="link" to="/products">
           Continue Shopping
@@ -77,7 +79,7 @@ const Product = ({ product }) => {
                 key={colour}
                 className={classNames(
                   CSS_FRAME_COLOURS[colour],
-                  'h-4 w-4 rounded-full ring-2 ring-gray-500'
+                  'ring-gray-500 h-4 w-4 rounded-full ring-2'
                 )}
               />
             ))}
@@ -85,13 +87,13 @@ const Product = ({ product }) => {
 
           <button
             onClick={handleAddToCart(product)}
-            className="rounded-lg bg-indigo-600 p-2 text-center font-bold text-white duration-150 hover:bg-indigo-700">
+            className="bg-indigo-600 hover:bg-indigo-700 rounded-lg p-2 text-center font-bold text-white duration-150">
             Add to cart
           </button>
           <Disclosure items={DISCLOSURE_ITEMS} />
         </div>
       </section>
-    </Layout>
+    </MainLayout>
   )
 }
 
