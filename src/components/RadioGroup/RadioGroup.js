@@ -13,7 +13,7 @@ const RadioGroup = ({ items, onChange, value }) => (
           {({ checked }) => (
             <div
               className={classNames(
-                checked ? 'bg-lime-400 text-slate-900' : 'bg-slate-700 text-slate-300',
+                checked ? 'bg-lime-400 text-teriary900' : 'bg-slate-700 text-teriary300',
                 'flex cursor-pointer items-center gap-2 p-4 '
               )}>
               {label}

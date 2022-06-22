@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Thin.ttf');
+    font-weight: 100;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-ExtraLight.ttf');
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Light.ttf');
+    font-weight: 300;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Regular.ttf');
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Medium.ttf');
+    font-weight: 500;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-SemiBold.ttf');
+    font-weight: 600;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Bold.ttf');
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-ExtraBold.ttf');
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    src: url('/assets/Poppins-Black.ttf');
+    font-weight: 900;
+  }
+
+
+
+  body {
+    @apply bg-white font-sans overflow-x-hidden
+  }
+
+  .title {
+    @apply text-4xl font-bold
+  }
+
+  .page-title {
+    @apply text-3xl font-semibold text-tertiary
+  }
+
+  .link {
+    @apply underline hover:text-tertiary cursor-pointer text-tertiary text-sm tracking-wide
+  }
+
+  .subtitle {
+    @apply text-tertiary text-sm tracking-wider
+  }
+
+  .product-title {
+    @apply text-lg font-medium tracking-wide
+  }
+
+  .price {
+    @apply text-sm font-medium tracking-wider
+  }
+}
+
+@layer utilities {
+  .home--pattern {
+    background-color: #000000;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%236d28d9' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}

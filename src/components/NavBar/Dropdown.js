@@ -1,27 +1,41 @@
+import { forwardRef } from 'react'
 import { Menu } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 
-import Link from 'components/Link'
+import Link from 'next/link'
 import { classNames } from 'utils'
 
+const MenuLink = forwardRef(({ href, active, children }, ref) => (
+  <Link href={href}>
+    <a
+      ref={ref}
+      className={classNames(
+        active ? 'bg-secondary text-white' : 'bg-primary',
+        'cursor-pointer px-12 py-8 font-semibold hover:bg-secondary hover:text-white'
+      )}>
+      {children}
+    </a>
+  </Link>
+))
+
 const Dropdown = ({ items }) => (
-  <Menu as="div" className="relative">
+  <Menu as="div" className="relative flex">
     {({ open }) => (
       <>
         <Menu.Button>
           {open ? (
-            <XIcon className="h-5 w-5 text-blue-500" />
+            <XIcon className="h-8 w-8 text-white" />
           ) : (
-            <MenuIcon className="h-5 w-5 text-blue-500" />
+            <MenuIcon className="h-8 w-8 text-white" />
           )}
         </Menu.Button>
-        <Menu.Items className="absolute top-14 -right-12 z-10 flex w-screen flex-col gap-4 bg-white px-12 py-8">
+        <Menu.Items className="absolute top-14 -right-12 z-10 flex w-screen flex-col divide-y divide-tertiary border-t-4 border-tertiary shadow outline-none">
           {items.map(({ title, to }) => (
             <Menu.Item key={title}>
               {({ active }) => (
-                <Link className={classNames(active ? 'bg-blue-500' : 'bg-green-500')} to={to}>
+                <MenuLink href={to} active={active}>
                   {title}
-                </Link>
+                </MenuLink>
               )}
             </Menu.Item>
           ))}
