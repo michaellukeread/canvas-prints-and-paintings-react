@@ -16,7 +16,7 @@ const Cart = () => {
   const [deliveryStatus, setDeliveryStatus] = useState(DELIVERY_OPTIONS[0].value)
 
   const { handleSubmit } = useCheckout(deliveryStatus)
-  const subtotal = cart.reduce((acc, elem) => (acc += elem.dollarAmount * elem.quantity), 0)
+  const subtotal = cart.reduce((acc, elem) => (acc += elem.price * elem.quantity), 0)
 
   const hasContent = cart.length > 0
 
@@ -39,7 +39,7 @@ const Cart = () => {
         )}
 
         {hasContent &&
-          cart.map(({ id, name, images, quantity, dollarAmount }) => (
+          cart.map(({ id, name, images, quantity, price }) => (
             <div
               key={id}
               className="border-slate-600 text-teriary50 my-8 grid grid-cols-3 border-b-2 pb-8">
@@ -52,7 +52,7 @@ const Cart = () => {
                   <Link className="product-title" to={`/products/${id}`}>
                     {name}
                   </Link>
-                  <p className="price">${dollarAmount}</p>
+                  <p className="price">${price}</p>
                 </div>
               </article>
 
@@ -67,7 +67,7 @@ const Cart = () => {
               </div>
 
               <p className="price text-right">
-                ${Math.round((dollarAmount * quantity + Number.EPSILON) * 100) / 100}
+                ${Math.round((price * quantity + Number.EPSILON) * 100) / 100}
               </p>
             </div>
           ))}

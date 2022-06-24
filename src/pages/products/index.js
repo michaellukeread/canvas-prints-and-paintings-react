@@ -78,8 +78,8 @@ const AllProducts = ({ products }) => {
 
         {count > 0 ? (
           <div className="grid grid-cols-12 gap-8">
-            {filteredProducts.map(({ id, name, images, dollarAmount }) => (
-              <Card key={id} id={id} title={name} image={images[0]} dollarAmount={dollarAmount} />
+            {filteredProducts.map(({ id, name, images, price }) => (
+              <Card key={id} id={id} title={name} image={images[0]} price={price} />
             ))}
           </div>
         ) : (
